@@ -83,5 +83,11 @@ public class Nut : MonoBehaviour {
     public void GoToNutPile()
     {
         destination = nutPile.position;
+
+        GameObject nut_pile_object = GameObject.FindGameObjectWithTag("NutPile");
+
+        SeedPile seed_pile = nut_pile_object.GetComponent<SeedPile>();
+
+        seed_pile.quantity++;
     }
 }
