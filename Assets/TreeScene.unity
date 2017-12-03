@@ -1054,6 +1054,7 @@ GameObject:
   - component: {fileID: 1051102917}
   - component: {fileID: 1051102916}
   - component: {fileID: 1051102918}
+  - component: {fileID: 1051102919}
   m_Layer: 0
   m_Name: Glove
   m_TagString: Untagged
@@ -1143,6 +1144,17 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 126.350876, y: 107.72955}
   m_EdgeRadius: 0
+--- !u!114 &1051102919
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1051102915}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a988929dcb3aab243b49dec1f51e30c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1051494606
 Prefab:
   m_ObjectHideFlags: 0
