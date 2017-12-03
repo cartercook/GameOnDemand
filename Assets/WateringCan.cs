@@ -30,7 +30,6 @@ public class WateringCan : MonoBehaviour
             }
         }
 
-
         if (touches.Length <= 0)
         {
             // Drop with Lerp
