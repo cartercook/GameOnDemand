@@ -24,15 +24,46 @@ public class Nut : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         // move towards destination
-        transform.position = Vector3.Lerp(transform.position, destination, 0.1f);
         // rotate
         rotation = Mathf.Lerp(rotation, destRotation, 0.1f);
         transform.rotation = Quaternion.Euler(0, 0, rotation);
 
-        // if touching nut pile
-        if (Vector2.Distance(transform.position, nutPile.position) < 50)
+        if (Controls.mode == Controls.Mode.gathering_seeds)
         {
-            Destroy(gameObject);
+            transform.position = Vector3.Lerp(transform.position, destination, 0.1f);
+
+            // if touching nut pile
+            if (Vector2.Distance(transform.position, nutPile.position) < 50)
+            {
+                Destroy(gameObject);
+            }
+        }
+        else if (Controls.mode == Controls.Mode.planting)
+        {
+            Vector2 touchPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+            if (Input.GetMouseButton(0))            {
+                // Drag
+                transform.position = new Vector3(touchPos.x, touchPos.y, 0.0f);            }
+            else
+            {
+                foreach (GameObject tile in GameObject.FindGameObjectsWithTag("Tile"))
+                {
+                    LandTile land_tile = tile.GetComponent<LandTile>();
+
+                    if (land_tile.collider.OverlapPoint(touchPos))
+                    {
+                        land_tile.PlantTile();
+
+                        // Center nut and make it smaller before disappearing in the hole?
+
+                        // Change state back
+                        Controls.mode = Controls.Mode.gathering_seeds;
+
+                        Destroy(gameObject);
+                    }
+                }
+            }
         }
 	}
 
