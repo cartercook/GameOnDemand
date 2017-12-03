@@ -30,13 +30,12 @@ public class Controls : MonoBehaviour {
 
             // detect tree at touch point
             Tree tree = GetComponentAtPos<Tree>(touchPos, "Tree");
-            hoe = GetComponentAtPos<Collider2D>(touchPos, "Hoe");
 
             if (tree != null && mode == Mode.gathering_seeds)
             {
                 tree.DropSeeds();
             }
-            else if (hoe != null && hoe.OverlapPoint(touchPos))
+            else if (hoe.OverlapPoint(touchPos))
             {
                 if (mode == Mode.gathering_seeds)
                     mode = Mode.tilling;

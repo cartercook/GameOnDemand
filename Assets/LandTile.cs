@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LandTile : MonoBehaviour {
-
+public class LandTile : MonoBehaviour
+{
     Collider2D collider;
 
     // Use this for initialization
@@ -22,9 +22,7 @@ public class LandTile : MonoBehaviour {
 
     public void TillTile()
     {
-        var tile = this.gameObject;
-
-        var sprite = tile.GetComponent<SpriteRenderer>();
+        SpriteRenderer sprite = this.gameObject.GetComponent<SpriteRenderer>();
 
         // Green
         sprite.color = new Color(0f, 167f, 8f, 255f);
