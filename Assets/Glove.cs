@@ -80,16 +80,13 @@ public class Glove : MonoBehaviour
             {
                 if (Input.GetMouseButton(0))
                 {
-                    //if (tile.status == LandTile.Status.planted && tile.growing_status == LandTile.GrowingStatus.ready)
-                    //{
-                    //    StartCoroutine(StartCountdown());
-                    //}
+                    transform.position = new Vector3(touchPos.x, touchPos.y, 0.0f); 
                 }
                 else
                 {
                     LandTile tile = Controls.GetComponentAtPos<LandTile>(transform.position, "Tile");
 
-                    if (tile != null)
+                    if (tile != null && tile.status == LandTile.Status.planted && tile.growing_status == LandTile.GrowingStatus.ready)
                     {
                         StartCoroutine(StartCountdown());
                     }
