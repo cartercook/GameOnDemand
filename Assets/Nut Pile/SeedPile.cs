@@ -6,6 +6,8 @@ public class SeedPile : MonoBehaviour
 {
     public Object seed;
 
+    public int quantity;
+
     new Collider2D collider;
     // Use this for initialization
     void Start ()
@@ -16,8 +18,15 @@ public class SeedPile : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-        if (Input.GetMouseButtonDown(0) && collider.OverlapPoint(Camera.main.ScreenToWorldPoint(Input.mousePosition)))        {            Controls.mode = Controls.Mode.planting;
+        if (Input.GetMouseButtonDown(0) && collider.OverlapPoint(Camera.main.ScreenToWorldPoint(Input.mousePosition)))        {            if (quantity > 0)
+            {
+                Controls.mode = Controls.Mode.planting;
 
-            Instantiate(seed, transform.position, Quaternion.identity);        }
+                Instantiate(seed, transform.position, Quaternion.identity);
+
+                quantity--;
+
+            }
+        }
     }
 }

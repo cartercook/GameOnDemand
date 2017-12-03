@@ -8,6 +8,7 @@ TagManager:
   - Hoe
   - Controls
   - Nut
+  - NutPile
   layers:
   - Default
   - TransparentFX
