@@ -22,14 +22,16 @@ public class Nut : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
-        // move towards destination
-        // rotate
-        rotation = Mathf.Lerp(rotation, destRotation, 0.1f);
-        transform.rotation = Quaternion.Euler(0, 0, rotation);
-
+	void Update ()
+    {
         if (Controls.mode == Controls.Mode.gathering_seeds)
         {
+            // move towards destination
+            // rotate
+
+            rotation = Mathf.Lerp(rotation, destRotation, 0.1f);
+            transform.rotation = Quaternion.Euler(0, 0, rotation);
+
             transform.position = Vector3.Lerp(transform.position, destination, 0.1f);
 
             // if touching nut pile
