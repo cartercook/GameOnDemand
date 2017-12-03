@@ -22,11 +22,9 @@ public class LandTile : MonoBehaviour {
 
     public void TillTile()
     {
-        var tile = this.gameObject;
-
-        var sprite = tile.GetComponent<SpriteRenderer>();
+        SpriteRenderer renderer = GetComponent<SpriteRenderer>();
 
         // Green
-        sprite.color = new Color(0f, 167f, 8f, 255f);
+        renderer.color = new Color(0f, 167f, 8f, 255f);
     }
 }

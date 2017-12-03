@@ -11,7 +11,7 @@ public class Nut : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         // random point on screen
-        destination = Camera.main.ScreenToWorldPoint(new Vector2(Random.Range(0, Screen.width), Random.Range(0, Screen.height - 210f)));
+        destination = Camera.main.ScreenToWorldPoint(new Vector2(Random.Range(40, Screen.width - 210), Random.Range(230, Screen.height - 250f)));
 	}
 	
 	// Update is called once per frame
