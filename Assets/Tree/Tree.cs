@@ -6,7 +6,13 @@ public class Tree : MonoBehaviour {
 
     public Object seed;
 
+    void Update() {
+        transform.localScale = Vector3.Lerp(transform.localScale, Vector3.one, 0.5f);
+    }
+
     public void DropSeeds() {
+        transform.localScale = Vector3.one * 1.2f;
+
         // create seeds at position
         int num = Random.Range(1, 1);
 
