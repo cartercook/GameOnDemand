@@ -6,7 +6,7 @@ public class Glove : MonoBehaviour
 {
     public Vector2 init_position;
     // Use this for initialization
-    new Collider2D collider;    public bool IsCountingDown = false;    public bool GloveIsOnTile = false;    public Timer timer;    void Start()    {        collider = GetComponent<Collider2D>();        init_position = transform.position;    }
+    new Collider2D collider;    public bool IsCountingDown = false;    public Timer timer;    void Start()    {        collider = GetComponent<Collider2D>();        init_position = transform.position;    }
 
     float currCountdownValue;
 
@@ -23,6 +23,23 @@ public class Glove : MonoBehaviour
             currCountdownValue--;
         }
 
+        while (Vector2.Distance(transform.position, init_position) > 10)
+        {
+            // Drop with Lerp
+            if (Vector2.Distance(transform.position, init_position) < 2f)
+            {
+                transform.position = init_position;
+                Controls.mode = Controls.Mode.gathering_seeds;
+            }
+            else
+            {
+                transform.position = Vector2.Lerp(transform.position, init_position, 0.3f);
+            }
+
+            //wait 1 frame
+            yield return 0;
+        }
+
         IsCountingDown = false;
     }
 
@@ -35,34 +52,11 @@ public class Glove : MonoBehaviour
         Vector2 touchPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);        if (Controls.mode == Controls.Mode.pulling)        {            if (Input.GetMouseButton(0))            {
                 // Drag
                 transform.position = new Vector3(touchPos.x, touchPos.y, 0.0f);            }            else if (!IsCountingDown)            {
-                GloveIsOnTile = false;
+                LandTile tile = Controls.GetComponentAtPos<LandTile>(transform.position, "Tile");
 
-                foreach (GameObject tile in GameObject.FindGameObjectsWithTag("Tile"))
-                {
-                    LandTile land_tile = tile.GetComponent<LandTile>();
-
-                    if (land_tile.collider.OverlapPoint(transform.position))
-                    {
-                        GloveIsOnTile = true;
-                    }
-                }
-
-                if (GloveIsOnTile)
+                if (tile != null)
                 {
                     StartCoroutine(StartCountdown());
-                }
-                else
-                {
-                    // Drop with Lerp
-                    if (Vector2.Distance(transform.position, init_position) < 2f)
-                    {
-                        transform.position = init_position;
-                        Controls.mode = Controls.Mode.gathering_seeds;
-                    }
-                    else
-                    {
-                        transform.position = Vector2.Lerp(transform.position, init_position, 0.3f);
-                    }
                 }
             }        }
     }
