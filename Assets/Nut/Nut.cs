@@ -53,7 +53,7 @@ public class Nut : MonoBehaviour {
                 {
                     LandTile land_tile = tile.GetComponent<LandTile>();
 
-                    if (land_tile.collider.OverlapPoint(touchPos))
+                    if (land_tile.collider.OverlapPoint(transform.position))
                     {
                         if (land_tile.status == LandTile.Status.tilled)
                         {
@@ -61,7 +61,7 @@ public class Nut : MonoBehaviour {
 
                             transform.localScale -= new Vector3(0.07f, 0.07f, 0);
 
-                            if (transform.localScale.x < 0.1f)
+                            if (transform.localScale.x < 0.1f && transform.localScale.y < 0.1f)
                             {
                                 land_tile.PlantTile();
 
