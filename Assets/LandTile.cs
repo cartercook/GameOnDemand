@@ -1,5 +1,11 @@
 ﻿using System.Collections;using System.Collections.Generic;using UnityEngine;public class LandTile : MonoBehaviour{    public new Collider2D collider;    // Use this for initialization    void Start ()    {        collider = GetComponent<Collider2D>();        status = Status.dirt;
-    }    public enum Status { dirt, tilled, planted, watered, sprouted };    public Status status;    // Update is called once per frame    void Update ()    {        if (Input.GetMouseButton(0))        {            Vector2 touchPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);            if (collider.OverlapPoint(touchPos) && Controls.mode == Controls.Mode.tilling)            {                TillTile();            }        }    }    public bool TillTile()    {        bool result = false;        if (status == Status.dirt)
+    }    public enum Status { dirt, tilled, planted, watered, sprouted };    public Status status;    // Update is called once per frame    void Update ()    {        if (Input.GetMouseButton(0))        {            Vector2 touchPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);            if (collider.OverlapPoint(touchPos))            {                if (Controls.mode == Controls.Mode.tilling)
+                {
+                    TillTile();
+                }                else if (Controls.mode == Controls.Mode.watering)
+                {
+                    WaterTile();
+                }            }        }    }    public bool TillTile()    {        bool result = false;        if (status == Status.dirt)
         {
             SpriteRenderer renderer = GetComponent<SpriteRenderer>();
 
