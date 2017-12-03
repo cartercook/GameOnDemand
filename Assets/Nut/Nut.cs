@@ -55,13 +55,25 @@ public class Nut : MonoBehaviour {
 
                     if (land_tile.collider.OverlapPoint(touchPos))
                     {
-                        land_tile.PlantTile();
-                        // Center nut and make it smaller before disappearing in the hole?
+                        if (land_tile.status == LandTile.Status.tilled)
+                        {
+                            transform.position = land_tile.transform.position;
 
-                        // Change state back
-                        Controls.mode = Controls.Mode.gathering_seeds;
+                            transform.localScale -= new Vector3(0.07f, 0.07f, 0);
 
-                        Destroy(gameObject);
+                            if (transform.localScale.x < 0.1f)
+                            {
+                                land_tile.PlantTile();
+
+                                Controls.mode = Controls.Mode.gathering_seeds;
+
+                                Destroy(gameObject);
+                            }
+                        }
+                        else
+                        {
+                            Destroy(gameObject);
+                        }
                     }
                 }
             }
