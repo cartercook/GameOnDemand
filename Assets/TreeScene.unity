@@ -186,7 +186,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4184387732084210, guid: 43c18e06fdae94db18cbd4791fa930ed, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -152
+      value: -150
       objectReference: {fileID: 0}
     - target: {fileID: 4184387732084210, guid: 43c18e06fdae94db18cbd4791fa930ed, type: 2}
       propertyPath: m_LocalPosition.y
@@ -311,7 +311,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4184387732084210, guid: 43c18e06fdae94db18cbd4791fa930ed, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 148
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 4184387732084210, guid: 43c18e06fdae94db18cbd4791fa930ed, type: 2}
       propertyPath: m_LocalPosition.y
@@ -366,7 +366,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4184387732084210, guid: 43c18e06fdae94db18cbd4791fa930ed, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -152
+      value: -150
       objectReference: {fileID: 0}
     - target: {fileID: 4184387732084210, guid: 43c18e06fdae94db18cbd4791fa930ed, type: 2}
       propertyPath: m_LocalPosition.y
@@ -495,7 +495,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4184387732084210, guid: 43c18e06fdae94db18cbd4791fa930ed, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 148
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 4184387732084210, guid: 43c18e06fdae94db18cbd4791fa930ed, type: 2}
       propertyPath: m_LocalPosition.y
@@ -784,6 +784,7 @@ GameObject:
   - component: {fileID: 820444325}
   - component: {fileID: 820444324}
   - component: {fileID: 820444326}
+  - component: {fileID: 820444327}
   m_Layer: 0
   m_Name: Watering Can
   m_TagString: Untagged
@@ -873,6 +874,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 128.67749, y: 128.67801}
   m_EdgeRadius: 0
+--- !u!114 &820444327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 820444323}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51634d779e856224b8935ddaac8c3a11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  init_position: {x: 0, y: 0, z: 0}
 --- !u!1001 &925896955
 Prefab:
   m_ObjectHideFlags: 0
@@ -933,7 +946,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4184387732084210, guid: 43c18e06fdae94db18cbd4791fa930ed, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -152
+      value: -150
       objectReference: {fileID: 0}
     - target: {fileID: 4184387732084210, guid: 43c18e06fdae94db18cbd4791fa930ed, type: 2}
       propertyPath: m_LocalPosition.y
@@ -1222,7 +1235,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4184387732084210, guid: 43c18e06fdae94db18cbd4791fa930ed, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -152
+      value: -150
       objectReference: {fileID: 0}
     - target: {fileID: 4184387732084210, guid: 43c18e06fdae94db18cbd4791fa930ed, type: 2}
       propertyPath: m_LocalPosition.y
@@ -1397,6 +1410,18 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 64.33
+--- !u!114 &1623633361
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1623633359}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29ef76501165748dc9c8050a04670b27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  seed: {fileID: 1288195675921028, guid: 4378296b13890434a83d1a419d95296d, type: 2}
 --- !u!1001 &1626505263
 Prefab:
   m_ObjectHideFlags: 0
@@ -1730,7 +1755,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ed95408737db4372841c5f1218259f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  init_position: {x: 0, y: 0, z: 0}
+  init_position: {x: 0, y: 0}
 --- !u!1001 &1790477750
 Prefab:
   m_ObjectHideFlags: 0
@@ -2103,7 +2128,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4184387732084210, guid: 43c18e06fdae94db18cbd4791fa930ed, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -152
+      value: -150
       objectReference: {fileID: 0}
     - target: {fileID: 4184387732084210, guid: 43c18e06fdae94db18cbd4791fa930ed, type: 2}
       propertyPath: m_LocalPosition.y
