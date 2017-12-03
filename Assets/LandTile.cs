@@ -24,7 +24,13 @@
 
 
             print("Growing Status: " + growing_status);
+
+            StartCoroutine(StartCountdown());
             // Display right sprite
+        }
+        else
+        {
+            // Display Ready sprite
         }
 
         IsCountingDown = false;

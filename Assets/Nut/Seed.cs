@@ -37,6 +37,12 @@ public class Seed : MonoBehaviour {
             if (Vector2.Distance(transform.position, nutPile.position) < 50)
             {
                 Destroy(gameObject);
+
+                GameObject nut_pile_object = GameObject.FindGameObjectWithTag("NutPile");
+
+                SeedPile seed_pile = nut_pile_object.GetComponent<SeedPile>();
+
+                seed_pile.quantity++;
             }
         }
 	}
@@ -44,11 +50,5 @@ public class Seed : MonoBehaviour {
     public void GoToNutPile()
     {
         destination = nutPile.position;
-
-        GameObject nut_pile_object = GameObject.FindGameObjectWithTag("NutPile");
-
-        SeedPile seed_pile = nut_pile_object.GetComponent<SeedPile>();
-
-        seed_pile.quantity++;
     }
 }
