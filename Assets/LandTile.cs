@@ -4,19 +4,20 @@ using UnityEngine;
 
 public class LandTile : MonoBehaviour {
 
+    Collider2D collider;
+
     // Use this for initialization
     void Start () {
-		
+        collider = GetComponent<Collider2D>();
 	}
 	
 	// Update is called once per frame
 	void Update ()
     {
-        if (Input.GetMouseButtonDown(0) && Controls.Instance.mode == Controls.Mode.tilling)        {            Vector2 touchPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);            GameObject tile = this.gameObject;
-            Collider2D collider = Controls.GetComponentAtPos<Collider2D>(touchPos, "Tile");
+        if (Input.GetMouseButtonDown(0) && Controls.Instance.mode == Controls.Mode.tilling)        {            Vector2 touchPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-            if (collider != null)            {
-                tile.GetComponent<LandTile>().TillTile();            }        }
+            if (collider.OverlapPoint(touchPos))            {
+                TillTile();            }        }
     }
 
     public void TillTile()

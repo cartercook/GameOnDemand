@@ -24,30 +24,28 @@ public class Controls : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
+        if (Input.GetMouseButtonDown(0))
         {
-            if (Input.GetMouseButtonDown(0))
+            Vector2 touchPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+            // detect tree at touch point
+            Tree tree = GetComponentAtPos<Tree>(touchPos, "Tree");
+            hoe = GetComponentAtPos<Collider2D>(touchPos, "Hoe");
+
+            if (tree != null && mode == Mode.gathering_seeds)
             {
-                Vector2 touchPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-
-                // detect tree at touch point
-                Tree tree = GetComponentAtPos<Tree>(touchPos, "Tree");
-                hoe = GetComponentAtPos<Collider2D>(touchPos, "Hoe");
-
-                if (tree != null && mode == Mode.gathering_seeds)
-                {
-                    tree.DropSeeds();
-                }
-                else if (hoe != null && hoe.OverlapPoint(touchPos))
-                {
-                    if (mode == Mode.gathering_seeds)
-                        mode = Mode.tilling;
-                    else
-                        mode = Mode.gathering_seeds;
-                }
+                tree.DropSeeds();
+            }
+            else if (hoe != null && hoe.OverlapPoint(touchPos))
+            {
+                if (mode == Mode.gathering_seeds)
+                    mode = Mode.tilling;
                 else
-                {
-                    CollectNutsAtPosition(touchPos);
-                }
+                    mode = Mode.gathering_seeds;
+            }
+            else
+            {
+                CollectNutsAtPosition(touchPos);
             }
         }
 	}
@@ -69,6 +67,7 @@ public class Controls : MonoBehaviour {
 
         // detect object at touch point
         Collider2D collider = Physics2D.OverlapPoint(position, ~LayerMask.NameToLayer(layerName));
+        print(System.Convert.ToString(~LayerMask.NameToLayer(layerName), 2) + ", " + layerName);
 
         if (collider != null)
         {
