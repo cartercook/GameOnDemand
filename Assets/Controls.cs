@@ -69,7 +69,7 @@ public class Controls : MonoBehaviour {
 
         // detect object at touch point
         Collider2D collider = Physics2D.OverlapPoint(position, ~LayerMask.NameToLayer(layerName));
-
+        print(System.Convert.ToString(~LayerMask.NameToLayer(layerName), 2) + ", " + layerName);
         if (collider != null)
         {
             component = collider.GetComponent<T>();
