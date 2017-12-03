@@ -56,7 +56,6 @@ public class Nut : MonoBehaviour {
                     if (land_tile.collider.OverlapPoint(touchPos))
                     {
                         land_tile.PlantTile();
-
                         // Center nut and make it smaller before disappearing in the hole?
 
                         // Change state back
@@ -69,7 +68,8 @@ public class Nut : MonoBehaviour {
         }
 	}
 
-    public void GoToNutPile() {
+    public void GoToNutPile()
+    {
         destination = nutPile.position;
     }
 }
