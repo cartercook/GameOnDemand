@@ -233,11 +233,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4822917850009276, guid: 4a494ed63f4db4d7eb0e8566cb5f685e, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -2
+      value: 80
       objectReference: {fileID: 0}
     - target: {fileID: 4822917850009276, guid: 4a494ed63f4db4d7eb0e8566cb5f685e, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 423
+      value: 396
       objectReference: {fileID: 0}
     - target: {fileID: 4822917850009276, guid: 4a494ed63f4db4d7eb0e8566cb5f685e, type: 2}
       propertyPath: m_LocalPosition.z
@@ -299,6 +299,12 @@ Prefab:
       propertyPath: m_Size.y
       value: 177.77777
       objectReference: {fileID: 0}
+    - target: {fileID: 212818171056019316, guid: 4a494ed63f4db4d7eb0e8566cb5f685e,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 1898cefff89594cda900a67ca318fc1a,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4a494ed63f4db4d7eb0e8566cb5f685e, type: 2}
   m_IsPrefabParent: 0
@@ -550,11 +556,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4822917850009276, guid: 4a494ed63f4db4d7eb0e8566cb5f685e, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 149
+      value: 277
       objectReference: {fileID: 0}
     - target: {fileID: 4822917850009276, guid: 4a494ed63f4db4d7eb0e8566cb5f685e, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 423
+      value: 396
       objectReference: {fileID: 0}
     - target: {fileID: 4822917850009276, guid: 4a494ed63f4db4d7eb0e8566cb5f685e, type: 2}
       propertyPath: m_LocalPosition.z
@@ -588,7 +594,7 @@ Prefab:
         type: 2}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: cec0f7bbb5f6f4da9bdfc216639bce25,
+      objectReference: {fileID: 21300000, guid: 40d6dbb3feb2048da91263783191a1f7,
         type: 3}
     - target: {fileID: 4822917850009276, guid: 4a494ed63f4db4d7eb0e8566cb5f685e, type: 2}
       propertyPath: m_LocalScale.x
@@ -1155,6 +1161,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a988929dcb3aab243b49dec1f51e30c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  init_position: {x: 0, y: 0}
+  IsCountingDown: 0
 --- !u!1001 &1051494606
 Prefab:
   m_ObjectHideFlags: 0
@@ -1592,11 +1600,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4822917850009276, guid: 4a494ed63f4db4d7eb0e8566cb5f685e, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -295
+      value: -278
       objectReference: {fileID: 0}
     - target: {fileID: 4822917850009276, guid: 4a494ed63f4db4d7eb0e8566cb5f685e, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 423
+      value: 396
       objectReference: {fileID: 0}
     - target: {fileID: 4822917850009276, guid: 4a494ed63f4db4d7eb0e8566cb5f685e, type: 2}
       propertyPath: m_LocalPosition.z
@@ -1658,6 +1666,12 @@ Prefab:
       propertyPath: m_Size.y
       value: 177.77777
       objectReference: {fileID: 0}
+    - target: {fileID: 212818171056019316, guid: 4a494ed63f4db4d7eb0e8566cb5f685e,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 6f968a9dc60d14270a3b6d46b06c7c69,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4a494ed63f4db4d7eb0e8566cb5f685e, type: 2}
   m_IsPrefabParent: 0
@@ -1944,11 +1958,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4822917850009276, guid: 4a494ed63f4db4d7eb0e8566cb5f685e, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -144
+      value: -91
       objectReference: {fileID: 0}
     - target: {fileID: 4822917850009276, guid: 4a494ed63f4db4d7eb0e8566cb5f685e, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 423
+      value: 396
       objectReference: {fileID: 0}
     - target: {fileID: 4822917850009276, guid: 4a494ed63f4db4d7eb0e8566cb5f685e, type: 2}
       propertyPath: m_LocalPosition.z
@@ -1982,7 +1996,7 @@ Prefab:
         type: 2}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: cec0f7bbb5f6f4da9bdfc216639bce25,
+      objectReference: {fileID: 21300000, guid: 0e7d3aaf530694c37bbd835aea517699,
         type: 3}
     - target: {fileID: 4822917850009276, guid: 4a494ed63f4db4d7eb0e8566cb5f685e, type: 2}
       propertyPath: m_LocalScale.x
