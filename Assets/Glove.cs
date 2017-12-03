@@ -46,18 +46,33 @@ public class Glove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // check for click
-        if (Input.GetMouseButtonDown(0) && collider.OverlapPoint(Camera.main.ScreenToWorldPoint(Input.mousePosition)))        {            Controls.mode = Controls.Mode.pulling;        }
+        if (!IsCountingDown)
+        {
+            // check for click
+            if (Input.GetMouseButtonDown(0) && collider.OverlapPoint(Camera.main.ScreenToWorldPoint(Input.mousePosition)))
+            {
+                Controls.mode = Controls.Mode.pulling;
+            }
 
-        Vector2 touchPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);        if (Controls.mode == Controls.Mode.pulling)        {            if (Input.GetMouseButton(0))            {
-                // Drag
-                transform.position = new Vector3(touchPos.x, touchPos.y, 0.0f);            }            else if (!IsCountingDown)            {
-                LandTile tile = Controls.GetComponentAtPos<LandTile>(transform.position, "Tile");
+            Vector2 touchPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-                if (tile != null)
+            if (Controls.mode == Controls.Mode.pulling)
+            {
+                if (Input.GetMouseButton(0))
                 {
-                    StartCoroutine(StartCountdown());
+                    // Drag
+                    transform.position = new Vector3(touchPos.x, touchPos.y, 0.0f);
                 }
-            }        }
+                else
+                {
+                    LandTile tile = Controls.GetComponentAtPos<LandTile>(transform.position, "Tile");
+
+                    if (tile != null)
+                    {
+                        StartCoroutine(StartCountdown());
+                    }
+                }
+            }
+        }
     }
 }
