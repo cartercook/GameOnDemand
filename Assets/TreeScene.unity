@@ -1182,6 +1182,7 @@ MonoBehaviour:
   wateringCan: {fileID: 820444326}
   glove: {fileID: 1051102918}
   IsDigging: 0
+  mode: 0
 --- !u!4 &1388324730
 Transform:
   m_ObjectHideFlags: 0
