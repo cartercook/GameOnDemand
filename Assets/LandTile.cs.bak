@@ -1,34 +1,0 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class LandTile : MonoBehaviour
-{
-    Collider2D collider;
-
-    // Use this for initialization
-    void Start () {
-        collider = GetComponent<Collider2D>();
-	}
-	
-	// Update is called once per frame
-	void Update ()
-    {
-        if (Input.GetMouseButtonDown(0) && Controls.Instance.mode == Controls.Mode.tilling)        {            Vector2 touchPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-
-            if (collider.OverlapPoint(touchPos))            {
-                TillTile();            }        }
-    }
-
-    public void TillTile()
-    {
-<<<<<<< HEAD
-        SpriteRenderer renderer = GetComponent<SpriteRenderer>();
-=======
-        SpriteRenderer sprite = this.gameObject.GetComponent<SpriteRenderer>();
->>>>>>> 7c335fd6bb81bb4955c0fa2af6cf797e482643d0
-
-        // Green
-        renderer.color = new Color(0f, 167f, 8f, 255f);
-    }
-}
