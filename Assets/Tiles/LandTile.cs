@@ -71,8 +71,6 @@
             status = Status.planted;
             growing_status = GrowingStatus.planted;
 
-            StartCoroutine(StartCountdown());
-
             result = true;
         }        return result;    }
 
@@ -81,9 +79,11 @@
         {
             SpriteRenderer renderer = GetComponent<SpriteRenderer>();
 
-            renderer.color = new Color(0f, 167f, 255f, 255f);
+            renderer.color = new Color(120f, 50f, 20f, 255f);
 
             status = Status.watered;
+
+            StartCoroutine(StartCountdown());
 
             result = true;
         }        return result;    }}

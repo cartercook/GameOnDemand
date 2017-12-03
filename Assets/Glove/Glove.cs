@@ -66,30 +66,50 @@ public class Glove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Touch[] touches = Controls.GetTouchesAndMouse();
+
         if (!IsCountingDown)
         {
-            // check for click
-            if (Input.GetMouseButtonDown(0) && collider.OverlapPoint(Camera.main.ScreenToWorldPoint(Input.mousePosition)))
+            foreach (Touch touch in touches)
             {
-                Controls.mode = Controls.Mode.pulling;
+                Vector2 touchPos = Camera.main.ScreenToWorldPoint(touch.position);
+
+                // check for click
+                if (touch.phase == TouchPhase.Began && collider.OverlapPoint(touchPos))
+                {
+                    Controls.mode = Controls.Mode.pulling;
+                }
+
+                if (Controls.mode == Controls.Mode.pulling)
+                {
+                    if (touch.phase == TouchPhase.Moved || touch.phase == TouchPhase.Stationary)
+                    {
+                        // Drag
+                        transform.position = touchPos;
+                    }
+                    else if (touch.phase == TouchPhase.Ended)
+                    {
+                        LandTile tile = Controls.GetComponentAtPos<LandTile>(transform.position, "Tile");
+
+                        if (tile != null && tile.status == LandTile.Status.watered && tile.growing_status == LandTile.GrowingStatus.ready)
+                        {
+                            StartCoroutine(StartCountdown());
+                        }
+                    }
+                }
             }
 
-            Vector2 touchPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-
-            if (Controls.mode == Controls.Mode.pulling)
+            if (touches.Length <= 0)
             {
-                if (Input.GetMouseButton(0))
+                // Drop with Lerp
+                if (Vector2.Distance(transform.position, init_position) < 2f)
                 {
-                    transform.position = new Vector3(touchPos.x, touchPos.y, 0.0f); 
+                    transform.position = init_position;
+                    Controls.mode = Controls.Mode.gathering_seeds;
                 }
                 else
                 {
-                    LandTile tile = Controls.GetComponentAtPos<LandTile>(transform.position, "Tile");
-
-                    if (tile != null && tile.status == LandTile.Status.planted && tile.growing_status == LandTile.GrowingStatus.ready)
-                    {
-                        StartCoroutine(StartCountdown());
-                    }
+                    transform.position = Vector2.Lerp(transform.position, init_position, 0.3f);
                 }
             }
         }
