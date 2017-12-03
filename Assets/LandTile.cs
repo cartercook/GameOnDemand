@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LandTile : MonoBehaviour {
-
+public class LandTile : MonoBehaviour
+{
     Collider2D collider;
 
     // Use this for initialization
@@ -14,10 +14,15 @@ public class LandTile : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-        if (Input.GetMouseButtonDown(0) && Controls.Instance.mode == Controls.Mode.tilling)        {            Vector2 touchPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        if (Input.GetMouseButtonDown(0) && Controls.Instance.mode == Controls.Mode.tilling)
+        {
+            Vector2 touchPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-            if (collider.OverlapPoint(touchPos))            {
-                TillTile();            }        }
+            if (collider.OverlapPoint(touchPos))
+            {
+                TillTile();
+            }
+        }
     }
 
     public void TillTile()
