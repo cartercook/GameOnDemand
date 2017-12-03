@@ -12,8 +12,8 @@ public class Controls : MonoBehaviour {
 
     public bool IsDigging = false;
 
-    public enum Mode { tilling, planting, watering, pulling };
-    Mode mode = Mode.tilling;
+    public enum Mode { gathering_seeds, tilling, planting, watering, pulling };
+    public Mode mode = Mode.gathering_seeds;
 
     void Start()
     {
@@ -31,14 +31,18 @@ public class Controls : MonoBehaviour {
 
                 // detect tree at touch point
                 Tree tree = GetComponentAtPos<Tree>(touchPos, "Tree");
+                hoe = GetComponentAtPos<Collider2D>(touchPos, "Hoe");
 
-                if (tree != null)
+                if (tree != null && mode == Mode.gathering_seeds)
                 {
                     tree.DropSeeds();
                 }
-                else if (hoe.OverlapPoint(touchPos))
+                else if (hoe != null && hoe.OverlapPoint(touchPos))
                 {
-                    mode = Mode.tilling;
+                    if (mode == Mode.gathering_seeds)
+                        mode = Mode.tilling;
+                    else
+                        mode = Mode.gathering_seeds;
                 }
                 else
                 {
@@ -59,16 +63,18 @@ public class Controls : MonoBehaviour {
         }
     }
 
-    T GetComponentAtPos<T>(Vector2 position, string layerName) where T:Component
+    public static T GetComponentAtPos<T>(Vector2 position, string layerName) where T:Component
     {
         T component = null;
 
         // detect object at touch point
         Collider2D collider = Physics2D.OverlapPoint(position, ~LayerMask.NameToLayer(layerName));
+
         if (collider != null)
         {
             component = collider.GetComponent<T>();
         }
+
         return component;
     }
 }

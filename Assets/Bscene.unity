@@ -139,7 +139,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9dcdea0cd6c545a380fc17f1d700fe5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hoe: {fileID: 0}
+  seedPile: {fileID: 0}
+  wateringCan: {fileID: 0}
+  glove: {fileID: 0}
   IsDigging: 0
+  mode: 0
 --- !u!4 &95184057
 Transform:
   m_ObjectHideFlags: 0
@@ -163,7 +168,7 @@ GameObject:
   - component: {fileID: 132055936}
   - component: {fileID: 132055937}
   - component: {fileID: 132055938}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Tilesheet_1
   m_TagString: Tile
   m_Icon: {fileID: 0}
@@ -248,7 +253,7 @@ GameObject:
   - component: {fileID: 150572280}
   - component: {fileID: 150572281}
   - component: {fileID: 150572282}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Tilesheet_0 (1)
   m_TagString: Tile
   m_Icon: {fileID: 0}
@@ -333,7 +338,7 @@ GameObject:
   - component: {fileID: 345641960}
   - component: {fileID: 345641961}
   - component: {fileID: 345641962}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Tilesheet_0 (1)
   m_TagString: Tile
   m_Icon: {fileID: 0}
@@ -418,7 +423,7 @@ GameObject:
   - component: {fileID: 472155760}
   - component: {fileID: 472155761}
   - component: {fileID: 472155762}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Tilesheet_1 (1)
   m_TagString: Tile
   m_Icon: {fileID: 0}
@@ -503,7 +508,7 @@ GameObject:
   - component: {fileID: 535529401}
   - component: {fileID: 535529402}
   - component: {fileID: 535529403}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Tilesheet_0
   m_TagString: Tile
   m_Icon: {fileID: 0}
@@ -707,7 +712,7 @@ GameObject:
   - component: {fileID: 677286373}
   - component: {fileID: 677286374}
   - component: {fileID: 677286375}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Tilesheet_1 (1)
   m_TagString: Tile
   m_Icon: {fileID: 0}
@@ -792,7 +797,7 @@ GameObject:
   - component: {fileID: 737854257}
   - component: {fileID: 737854258}
   - component: {fileID: 737854259}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Tilesheet_1
   m_TagString: Tile
   m_Icon: {fileID: 0}
@@ -1035,7 +1040,7 @@ GameObject:
   - component: {fileID: 882955094}
   - component: {fileID: 882955095}
   - component: {fileID: 882955096}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Tilesheet_0 (1)
   m_TagString: Tile
   m_Icon: {fileID: 0}
@@ -1152,7 +1157,7 @@ GameObject:
   - component: {fileID: 1033985880}
   - component: {fileID: 1033985881}
   - component: {fileID: 1033985882}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Tilesheet_0 (1)
   m_TagString: Tile
   m_Icon: {fileID: 0}
@@ -1240,7 +1245,7 @@ GameObject:
   - component: {fileID: 1066446769}
   m_Layer: 11
   m_Name: Hoe
-  m_TagString: Untagged
+  m_TagString: Hoe
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1431,7 +1436,7 @@ GameObject:
   - component: {fileID: 1268509254}
   - component: {fileID: 1268509255}
   - component: {fileID: 1268509256}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Tilesheet_1
   m_TagString: Tile
   m_Icon: {fileID: 0}
@@ -1516,7 +1521,7 @@ GameObject:
   - component: {fileID: 1415153052}
   - component: {fileID: 1415153053}
   - component: {fileID: 1415153054}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Tilesheet_1 (1)
   m_TagString: Tile
   m_Icon: {fileID: 0}
@@ -1601,7 +1606,7 @@ GameObject:
   - component: {fileID: 1469028586}
   - component: {fileID: 1469028587}
   - component: {fileID: 1469028588}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Tilesheet_1 (1)
   m_TagString: Tile
   m_Icon: {fileID: 0}
@@ -1778,7 +1783,7 @@ GameObject:
   - component: {fileID: 1719445022}
   - component: {fileID: 1719445023}
   - component: {fileID: 1719445024}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Tilesheet_0
   m_TagString: Tile
   m_Icon: {fileID: 0}
@@ -1895,7 +1900,7 @@ GameObject:
   - component: {fileID: 1846431120}
   - component: {fileID: 1846431121}
   - component: {fileID: 1846431122}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Tilesheet_0
   m_TagString: Tile
   m_Icon: {fileID: 0}
