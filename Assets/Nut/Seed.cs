@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Nut : MonoBehaviour {
+public class Seed : MonoBehaviour {
     // reference to nut pile
     public Transform nutPile;
 
@@ -37,45 +37,6 @@ public class Nut : MonoBehaviour {
             if (Vector2.Distance(transform.position, nutPile.position) < 50)
             {
                 Destroy(gameObject);
-            }
-        }
-        else if (Controls.mode == Controls.Mode.planting)
-        {
-            foreach (Touch touch in Controls.GetTouchesAndMouse())
-            {
-                Vector2 touchPos = Camera.main.ScreenToWorldPoint(touch.position);
-
-                if (touch.phase == TouchPhase.Moved)
-                {
-                    // Drag
-                    transform.position = touchPos;
-                }
-                else
-                {
-                    LandTile tile = Controls.GetComponentAtPos<LandTile>(transform.position, "Tile");
-
-                    if (tile != null && tile.collider.OverlapPoint(transform.position))
-                    {
-                        if (tile.status == LandTile.Status.tilled)
-                        {
-                            transform.position = tile.transform.position;
-
-                            // make seed smaller until it disappears
-                            transform.localScale -= new Vector3(0.07f, 0.07f, 0);
-
-                            if (transform.localScale.x < 0.1f && transform.localScale.y < 0.1f)
-                            {
-                                tile.PlantTile();
-                                Controls.mode = Controls.Mode.gathering_seeds;
-                                Destroy(gameObject);
-                            }
-                        }
-                        else
-                        {
-                            Destroy(gameObject);
-                        }
-                    }
-                }
             }
         }
 	}

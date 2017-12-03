@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Tree : MonoBehaviour {
 
-    public Object seed;
+    public GameObject seed;
     float maxChance = 1f;
     float chance;
 
@@ -31,7 +31,7 @@ public class Tree : MonoBehaviour {
         if (Random.value <= chance)
         {
             // create seed at position
-            Instantiate(seed, transform.position, Quaternion.identity);
+            Instantiate(seed, transform.position, Quaternion.identity).GetComponent<Seed>().enabled = true;
 
             // decrease chance
             chance /= 2;
