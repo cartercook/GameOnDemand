@@ -41,31 +41,31 @@ public class Nut : MonoBehaviour {
         }
         else if (Controls.mode == Controls.Mode.planting)
         {
-            Vector2 touchPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-
-            if (Input.GetMouseButton(0))            {
-                // Drag
-                transform.position = new Vector3(touchPos.x, touchPos.y, 0.0f);            }
-            else
+            foreach (Touch touch in Controls.GetTouchesAndMouse())
             {
-                foreach (GameObject tile in GameObject.FindGameObjectsWithTag("Tile"))
+                Vector2 touchPos = Camera.main.ScreenToWorldPoint(touch.position);
+
+                if (touch.phase == TouchPhase.Moved)
                 {
-                    LandTile land_tile = tile.GetComponent<LandTile>();
+                    // Drag
+                    transform.position = touchPos;
+                }
+                else
+                {
+                    LandTile tile = Controls.GetComponentAtPos<LandTile>(transform.position, "Tile");
 
-                    if (land_tile.collider.OverlapPoint(transform.position))
+                    if (tile != null && tile.collider.OverlapPoint(transform.position))
                     {
-                        if (land_tile.status == LandTile.Status.tilled)
+                        if (tile.status == LandTile.Status.tilled)
                         {
-                            transform.position = land_tile.transform.position;
+                            transform.position = tile.transform.position;
 
+                            // make seed smaller until it disappears
                             transform.localScale -= new Vector3(0.07f, 0.07f, 0);
-
                             if (transform.localScale.x < 0.1f && transform.localScale.y < 0.1f)
                             {
-                                land_tile.PlantTile();
-
+                                tile.PlantTile();
                                 Controls.mode = Controls.Mode.gathering_seeds;
-
                                 Destroy(gameObject);
                             }
                         }
