@@ -28,7 +28,6 @@ public class Nut : MonoBehaviour {
         {
             // move towards destination
             // rotate
-
             rotation = Mathf.Lerp(rotation, destRotation, 0.1f);
             transform.rotation = Quaternion.Euler(0, 0, rotation);
 
