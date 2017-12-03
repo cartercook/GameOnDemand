@@ -10,10 +10,8 @@ public class Controls : MonoBehaviour {
     public Collider2D wateringCan;
     public Collider2D glove;
 
-    public bool IsDigging = false;
-
     public enum Mode { gathering_seeds, tilling, planting, watering, pulling };
-    public Mode mode = Mode.gathering_seeds;
+    public static Mode mode = Mode.gathering_seeds;
 
     void Start()
     {
@@ -26,21 +24,12 @@ public class Controls : MonoBehaviour {
     {
         if (Input.GetMouseButtonDown(0))
         {
-            Vector2 touchPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Vector3 touchPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-            // detect tree at touch point
             Tree tree = GetComponentAtPos<Tree>(touchPos, "Tree");
-
-            if (tree != null && mode == Mode.gathering_seeds)
+            if (tree != null)
             {
                 tree.DropSeeds();
-            }
-            else if (hoe.OverlapPoint(touchPos))
-            {
-                if (mode == Mode.gathering_seeds)
-                    mode = Mode.tilling;
-                else
-                    mode = Mode.gathering_seeds;
             }
             else
             {
