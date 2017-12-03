@@ -12,10 +12,14 @@ public class LandTile : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-		
-	}
+        if (Input.GetMouseButtonDown(0) && Controls.Instance.mode == Controls.Mode.tilling)        {            Vector2 touchPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);            GameObject tile = this.gameObject;
+            Collider2D collider = Controls.GetComponentAtPos<Collider2D>(touchPos, "Tile");
 
-    public void DigTile()
+            if (collider != null)            {
+                tile.GetComponent<LandTile>().TillTile();            }        }
+    }
+
+    public void TillTile()
     {
         var tile = this.gameObject;
 
