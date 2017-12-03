@@ -6,17 +6,7 @@ public class Glove : MonoBehaviour
 {
     public Vector2 init_position;
     // Use this for initialization
-    new Collider2D collider;
-
-    public bool IsCountingDown = false;
-
-    public Timer timer;
-
-    void Start()
-    {
-        collider = GetComponent<Collider2D>();
-        init_position = transform.position;
-    }
+    new Collider2D collider;    public bool IsCountingDown = false;    public Timer timer;    void Start()    {        collider = GetComponent<Collider2D>();        init_position = transform.position;    }
 
     float currCountdownValue;
 
@@ -80,10 +70,15 @@ public class Glove : MonoBehaviour
             {
                 if (Input.GetMouseButton(0))
                 {
+<<<<<<< HEAD
+                    // Drag
+                    transform.position = new Vector3(touchPos.x, touchPos.y, 0.0f);
+=======
                     if (tile.status == LandTile.Status.planted && tile.growing_status == LandTile.GrowingStatus.ready)
                     {
                         StartCoroutine(StartCountdown());
                     }
+>>>>>>> 02c3b359d79c17366eeb81421432ae0a1f5c5ea9
                 }
                 else
                 {

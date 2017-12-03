@@ -22,6 +22,8 @@
 
             growing_status++;
 
+
+            print("Growing Status: " + growing_status);
             // Display right sprite
         }
 

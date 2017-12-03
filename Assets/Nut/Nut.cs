@@ -62,6 +62,7 @@ public class Nut : MonoBehaviour {
 
                             // make seed smaller until it disappears
                             transform.localScale -= new Vector3(0.07f, 0.07f, 0);
+
                             if (transform.localScale.x < 0.1f && transform.localScale.y < 0.1f)
                             {
                                 tile.PlantTile();
