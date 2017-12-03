@@ -17,15 +17,15 @@ public class Tree : MonoBehaviour {
     {
         transform.localScale = Vector3.Lerp(transform.localScale, Vector3.one, 0.5f);
 
-        // increase chance by 0.01
-        chance = Mathf.Min(chance + 0.01f, maxChance);
+        // increase by one every 10 seconds
+        chance = Mathf.Min(chance + Time.deltaTime/100, maxChance);
     }
 
     public void DropSeeds()
     {
         transform.localScale = Vector3.one * 1.2f;
 
-        print(chance); 
+        print(chance);
 
         // random chance
         if (Random.value <= chance)
@@ -34,7 +34,7 @@ public class Tree : MonoBehaviour {
             Instantiate(seed, transform.position, Quaternion.identity);
 
             // decrease chance
-            chance = Mathf.Max(chance - 0.3f, 0f);
+            chance /= 2;
         }
     }
 }

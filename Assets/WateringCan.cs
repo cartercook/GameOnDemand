@@ -21,13 +21,9 @@ public class WateringCan : MonoBehaviour
                 Controls.mode = Controls.Mode.watering;
             }
 
-            print("Mode: " + Controls.mode);
-
             if (Controls.mode == Controls.Mode.watering)            {
-                print("watering");
-
                 if (touch.phase == TouchPhase.Moved || touch.phase == TouchPhase.Stationary)
-                {                    print("dragging");
+                {
                     // Drag
                     transform.position = touchPos;
                 }
@@ -37,7 +33,6 @@ public class WateringCan : MonoBehaviour
 
         if (touches.Length <= 0)
         {
-            print("dropping");
             // Drop with Lerp
             if (Vector2.Distance(transform.position, init_position) < 2f)
             {
