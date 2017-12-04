@@ -4,9 +4,10 @@ using System.Threading;
 
 public class Glove : MonoBehaviour
 {
-    public Vector2 init_position;
+    public Vector3 init_position;
     // Use this for initialization
     new Collider2D collider;
+    new SpriteRenderer renderer;
 
     public bool IsCountingDown = false;
 
@@ -15,16 +16,19 @@ public class Glove : MonoBehaviour
     void Start()
     {
         collider = GetComponent<Collider2D>();
+        renderer = GetComponent<SpriteRenderer>();
         init_position = transform.position;
     }
 
     float currCountdownValue;
 
-    public IEnumerator StartCountdown(float countdownValue = 5)
+    public IEnumerator StartCountdown(float countdownValue = 4)
     {
         IsCountingDown = true;
-
         currCountdownValue = countdownValue;
+
+        // hide glove
+        renderer.enabled = false;
 
         while (currCountdownValue > 0)
         {
@@ -33,16 +37,19 @@ public class Glove : MonoBehaviour
             currCountdownValue--;
         }
 
+        // show glove
+        renderer.enabled = true;
+
         LandTile tile = Controls.GetComponentAtPos<LandTile>(transform.position, "Tile");
 
         if (tile != null)
         {
-            tile.growing_status = LandTile.GrowingStatus.not_planted;
-            tile.status = LandTile.Status.dirt;
+            tile.status = LandTile.Status.untilled;
 
             // Put dirt sprite
         }
 
+        //return to original position
         while (Vector2.Distance(transform.position, init_position) > 10)
         {
             // Drop with Lerp
@@ -53,7 +60,7 @@ public class Glove : MonoBehaviour
             }
             else
             {
-                transform.position = Vector2.Lerp(transform.position, init_position, 0.3f);
+                transform.position = Vector3.Lerp(transform.position, init_position, 0.3f);
             }
 
             //wait 1 frame
@@ -91,8 +98,11 @@ public class Glove : MonoBehaviour
                     {
                         LandTile tile = Controls.GetComponentAtPos<LandTile>(transform.position, "Tile");
 
-                        if (tile != null && tile.status == LandTile.Status.watered && tile.growing_status == LandTile.GrowingStatus.ready)
+                        if (tile != null && tile.watered && tile.status == LandTile.Status.ready)
                         {
+                            transform.position = (Vector2)tile.transform.position;
+                            tile.status = LandTile.Status.pulling;
+
                             StartCoroutine(StartCountdown());
                         }
                     }

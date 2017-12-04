@@ -13,7 +13,10 @@ public class Seed : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         // random point on screen
-        destination = Camera.main.ScreenToWorldPoint(new Vector2(Random.Range(40, Screen.width - 210), Random.Range(60, Screen.height - 250f)));
+        int width = 768;
+        int height = 1080;
+
+        destination = new Vector2(Random.Range(-width/2 + 40, width/2 - 210), Random.Range(-height/2 + 60, height/2 - 250));
 
         //random rotation
         rotation = Random.Range(-180f, 180f);
