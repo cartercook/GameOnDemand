@@ -64,7 +64,7 @@ public class Glove : MonoBehaviour
             }
             else
             {
-                transform.position = Vector3.Lerp(transform.position, init_position, 0.3f);
+                transform.position = Vector3.Lerp(transform.position, init_position, 9 * Time.deltaTime);
             }
 
             //wait 1 frame
@@ -126,7 +126,7 @@ public class Glove : MonoBehaviour
                 }
                 else
                 {
-                    transform.position = Vector2.Lerp(transform.position, init_position, 0.3f);
+                    transform.position = Vector2.Lerp(transform.position, init_position, 9 * Time.deltaTime);
                 }
             }
         }

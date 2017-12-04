@@ -31,10 +31,10 @@ public class Seed : MonoBehaviour {
         {
             // move towards destination
             // rotate
-            rotation = Mathf.Lerp(rotation, destRotation, 0.1f);
+            rotation = Mathf.Lerp(rotation, destRotation, 3 * Time.deltaTime);
             transform.rotation = Quaternion.Euler(0, 0, rotation);
 
-            transform.position = Vector3.Lerp(transform.position, destination, 0.1f);
+            transform.position = Vector3.Lerp(transform.position, destination, 3 * Time.deltaTime);
 
             // if touching nut pile
             if (Vector2.Distance(transform.position, nutPile.position) < 50)

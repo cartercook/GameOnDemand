@@ -15,7 +15,7 @@ public class Tree : MonoBehaviour {
 
     void Update()
     {
-        transform.localScale = Vector3.Lerp(transform.localScale, Vector3.one, 0.5f);
+        transform.localScale = Vector3.Lerp(transform.localScale, Vector3.one, 15 * Time.deltaTime);
 
         // increase by one every 10 seconds
         chance = Mathf.Min(chance + Time.deltaTime/100, maxChance);

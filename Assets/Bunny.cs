@@ -31,19 +31,21 @@ public class Bunny : MonoBehaviour {
         if (jumping)
         {
             // simulate gravity
-            vel += accel;
+            vel += accel * Time.deltaTime;
             Vector3 newPos = transform.position;
 
-            newPos.x += renderer.flipX ? 10 : -10; // horizontal speed
+            float xVel = 240 * Time.deltaTime;
 
-            if (newPos.y + vel < originalY)
+            newPos.x += renderer.flipX ? xVel : -xVel; // horizontal speed
+
+            if (newPos.y + vel * Time.deltaTime < originalY)
             {
                 jumping = false;
                 newPos.y = originalY;
             }
             else
             {
-                newPos.y += vel;
+                newPos.y += vel * Time.deltaTime;
             }
 
             transform.position = newPos;
@@ -92,10 +94,8 @@ public class Bunny : MonoBehaviour {
         jumping = true;
         //animator.enabled = false;
 
-        vel = 50;
-        accel = -5;
+        vel = 1400;
+        accel = -5000;
         originalY = transform.position.y;
     }
-
-
 }

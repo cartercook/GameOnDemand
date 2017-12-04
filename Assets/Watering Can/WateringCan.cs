@@ -40,7 +40,7 @@ public class WateringCan : MonoBehaviour
             }
             else
             {
-                transform.position = Vector2.Lerp(transform.position, init_position, 0.3f);
+                transform.position = Vector2.Lerp(transform.position, init_position, 9 * Time.deltaTime);
             }
         }
     }
