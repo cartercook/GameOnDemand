@@ -20,6 +20,9 @@ public class Bunny : MonoBehaviour {
         renderer = GetComponent<SpriteRenderer>();
         collider = GetComponent<Collider2D>();
 
+        //random orientation
+        renderer.flipX = Random.value > 0.5;
+
         StartJump();
 	}
 	

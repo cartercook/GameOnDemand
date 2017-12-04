@@ -42,12 +42,8 @@
                 if (collider.OverlapPoint(touchPos))
                 {
                     if (Controls.mode == Controls.Mode.tilling)
-                    {
-                        TillTile();
-                    }
-                    else if (Controls.mode == Controls.Mode.watering)
-                    {
-                        WaterTile();
+                    {                        Bunny bunny = Controls.GetComponentAtPos<Bunny>(touchPos, "Bunny");                        if (bunny == null)                        {
+                            TillTile();                        }
                     }
                 }
             }        }    }    public bool TillTile()    {        if (status == Status.untilled)
@@ -68,4 +64,4 @@
                 StartCoroutine(StartCountdown());            }
 
             return true;
-        }        return false;    }}
+        }        return false;    }    public void ResetTile()    {        watered = false;        GetComponent<SpriteRenderer>().color = Color.white;        status = Status.untilled;    }}

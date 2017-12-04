@@ -47,23 +47,14 @@ public class SeedPlanting : MonoBehaviour
         {
             LandTile tile = Controls.GetComponentAtPos<LandTile>(transform.position, "Tile");
 
-            print("Tile: " + tile);
-
             if (tile != null)
             {
-                print("Tile: " + tile.status);
+                Bunny bunny = Controls.GetComponentAtPos<Bunny>(transform.position, "Bunny");
 
-                if (tile.status == LandTile.Status.tilled)
+                if (tile.status == LandTile.Status.tilled && bunny == null)
                 {
                     // make seed smaller until it disappears
                     transform.localScale -= new Vector3(0.1f, 0.1f, 0);
-
-                    print("Tile: " + tile.status);
-
-                    print("Tile: " + transform.position);
-
-                    print("Tile x: " + transform.localScale.x);
-                    print("Tile y: " + transform.localScale.y);
 
                     if (transform.localScale.x < 0.1f && transform.localScale.y < 0.1f)
                     {

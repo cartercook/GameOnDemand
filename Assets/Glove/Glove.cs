@@ -46,7 +46,7 @@ public class Glove : MonoBehaviour
 
         if (tile != null)
         {
-            tile.status = LandTile.Status.untilled;
+            tile.ResetTile();
 
             Vector3 spawnPos = tile.transform.position;
             spawnPos.z = -1;
@@ -100,18 +100,12 @@ public class Glove : MonoBehaviour
                     }
                     else if (touch.phase == TouchPhase.Ended)
                     {
+                        LandTile tile = Controls.GetComponentAtPos<LandTile>(transform.position, "Tile");
+
                         // a bunny obsructs your path!
                         Bunny bunny = Controls.GetComponentAtPos<Bunny>(transform.position, "Bunny");
 
-                        if (bunny != null)
-                        {
-                            // out of my way!
-                            bunny.StartJump();
-                        }
-
-                        LandTile tile = Controls.GetComponentAtPos<LandTile>(transform.position, "Tile");
-
-                        if (tile != null && tile.watered && tile.status == LandTile.Status.ready)
+                        if (tile != null && bunny == null && tile.watered && tile.status == LandTile.Status.ready)
                         {
                             transform.position = (Vector2)tile.transform.position;
                             tile.status = LandTile.Status.pulling;
