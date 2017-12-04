@@ -56,7 +56,7 @@ public class SeedPlanting : MonoBehaviour
                 if (tile.status == LandTile.Status.tilled)
                 {
                     // make seed smaller until it disappears
-                    transform.localScale -= new Vector3(0.07f, 0.07f, 0);
+                    transform.localScale -= new Vector3(0.1f, 0.1f, 0);
 
                     print("Tile: " + tile.status);
 
