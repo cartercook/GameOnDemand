@@ -23,6 +23,16 @@ public class Glove : MonoBehaviour
             currCountdownValue--;
         }
 
+        LandTile tile = Controls.GetComponentAtPos<LandTile>(transform.position, "Tile");
+
+        if (tile != null)
+        {
+            tile.growing_status = LandTile.GrowingStatus.not_planted;
+            tile.status = LandTile.Status.dirt;
+
+            // Put dirt sprite
+        }
+
         while (Vector2.Distance(transform.position, init_position) > 10)
         {
             // Drop with Lerp
@@ -56,7 +66,10 @@ public class Glove : MonoBehaviour
 
                 if (tile != null)
                 {
-                    StartCoroutine(StartCountdown());
+                    if (tile.status == LandTile.Status.planted && tile.growing_status == LandTile.GrowingStatus.ready)
+                    {
+                        StartCoroutine(StartCountdown());
+                    }
                 }
             }        }
     }
