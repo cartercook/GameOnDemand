@@ -16,10 +16,10 @@ public class SeedPlanting : MonoBehaviour
     {
         print("mode: " + Controls.mode);
 
+        Touch[] touches = Controls.GetTouchesAndMouse();
+
         if (Controls.mode == Controls.Mode.planting)
         {
-            Touch[] touches = Controls.GetTouchesAndMouse();
-
             print("touches: " + touches.Length);
 
             foreach (Touch touch in touches)
@@ -41,43 +41,43 @@ public class SeedPlanting : MonoBehaviour
                     }
                 }
             }
+        }
 
-            if (touches.Length <= 0)
+        if (touches.Length <= 0)
+        {
+            LandTile tile = Controls.GetComponentAtPos<LandTile>(transform.position, "Tile");
+
+            print("Tile: " + tile);
+
+            if (tile != null)
             {
-                LandTile tile = Controls.GetComponentAtPos<LandTile>(transform.position, "Tile");
+                print("Tile: " + tile.status);
 
-                print("Tile: " + tile);
-
-                if (tile != null)
+                if (tile.status == LandTile.Status.tilled)
                 {
+                    // make seed smaller until it disappears
+                    transform.localScale -= new Vector3(0.07f, 0.07f, 0);
+
                     print("Tile: " + tile.status);
 
-                    if (tile.status == LandTile.Status.tilled)
+                    print("Tile: " + transform.position);
+
+                    print("Tile x: " + transform.localScale.x);
+                    print("Tile y: " + transform.localScale.y);
+
+                    if (transform.localScale.x < 0.1f && transform.localScale.y < 0.1f)
                     {
-                        // make seed smaller until it disappears
-                        transform.localScale -= new Vector3(0.07f, 0.07f, 0);
-
-                        print("Tile: " + tile.status);
-
-                        print("Tile: " + transform.position);
-
-                        print("Tile x: " + transform.localScale.x);
-                        print("Tile y: " + transform.localScale.y);
-
-                        if (transform.localScale.x < 0.1f && transform.localScale.y < 0.1f)
-                        {
-                            print("destroy1");
-                            tile.PlantTile();
-                            Controls.mode = Controls.Mode.gathering_seeds;
-                            Destroy(gameObject);
-                        }
-                    }
-                    else
-                    {
-                        print("destroy2");
+                        print("destroy1");
+                        tile.PlantTile();
                         Controls.mode = Controls.Mode.gathering_seeds;
                         Destroy(gameObject);
                     }
+                }
+                else
+                {
+                    print("destroy2");
+                    Controls.mode = Controls.Mode.gathering_seeds;
+                    Destroy(gameObject);
                 }
             }
         }
