@@ -34,7 +34,6 @@ public class WateringCan : MonoBehaviour
             }
         }
 
-
         if (touches.Length <= 0)
         {
             print("dropping");
