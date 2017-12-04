@@ -4,6 +4,8 @@ using System.Threading;
 
 public class Glove : MonoBehaviour
 {
+    public GameObject Bunny;
+
     public Vector3 init_position;
     // Use this for initialization
     new Collider2D collider;
@@ -22,7 +24,7 @@ public class Glove : MonoBehaviour
 
     float currCountdownValue;
 
-    public IEnumerator StartCountdown(float countdownValue = 4)
+    public IEnumerator StartCountdown(float countdownValue = 1)
     {
         IsCountingDown = true;
         currCountdownValue = countdownValue;
@@ -46,7 +48,9 @@ public class Glove : MonoBehaviour
         {
             tile.status = LandTile.Status.untilled;
 
-            // Put dirt sprite
+            Vector3 spawnPos = tile.transform.position;
+            spawnPos.z = -1;
+            Instantiate(Bunny, spawnPos, Quaternion.identity);
         }
 
         //return to original position
@@ -96,6 +100,15 @@ public class Glove : MonoBehaviour
                     }
                     else if (touch.phase == TouchPhase.Ended)
                     {
+                        // a bunny obsructs your path!
+                        Bunny bunny = Controls.GetComponentAtPos<Bunny>(transform.position, "Bunny");
+
+                        if (bunny != null)
+                        {
+                            // out of my way!
+                            bunny.StartJump();
+                        }
+
                         LandTile tile = Controls.GetComponentAtPos<LandTile>(transform.position, "Tile");
 
                         if (tile != null && tile.watered && tile.status == LandTile.Status.ready)

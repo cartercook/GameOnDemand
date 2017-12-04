@@ -26,7 +26,6 @@ public class Plant : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        print("Status: " + (int)tile.status);
         if (tile.status == LandTile.Status.pulling)
         {
             animator.enabled = true;

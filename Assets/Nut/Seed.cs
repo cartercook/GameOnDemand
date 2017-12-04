@@ -11,7 +11,7 @@ public class Seed : MonoBehaviour {
     float destRotation;
 
 	// Use this for initialization
-	void Start () {
+	void Awake () {
         // random point on screen
         int width = 768;
         int height = 1080;
@@ -53,5 +53,11 @@ public class Seed : MonoBehaviour {
     public void GoToNutPile()
     {
         destination = nutPile.position;
+    }
+
+    public void Reset()
+    {
+        destination = transform.position;
+        rotation = destRotation = transform.rotation.z;
     }
 }

@@ -67,7 +67,6 @@ public class SeedPlanting : MonoBehaviour
 
                     if (transform.localScale.x < 0.1f && transform.localScale.y < 0.1f)
                     {
-                        print("destroy1");
                         tile.PlantTile();
                         Controls.mode = Controls.Mode.gathering_seeds;
                         Destroy(gameObject);
@@ -75,9 +74,14 @@ public class SeedPlanting : MonoBehaviour
                 }
                 else
                 {
-                    print("destroy2");
                     Controls.mode = Controls.Mode.gathering_seeds;
-                    Destroy(gameObject);
+
+                    // drop seed on ground
+                    Seed seed = GetComponent<Seed>();
+                    seed.Reset();
+
+                    seed.enabled = true;
+                    this.enabled = false;
                 }
             }
         }
